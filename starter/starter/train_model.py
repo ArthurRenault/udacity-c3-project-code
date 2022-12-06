@@ -35,11 +35,7 @@ if __name__ == '__main__':
     model.save_training_pipeline(encoder, trained_model, 'model/encoder.pkl', 'model/model.pkl')
 
     predictions = model.inference(trained_model, X_test)
-    precision, recall, fbeta = model.compute_model_metrics(y_test, predictions)
 
-    with open('model/results.txt', 'w') as file:
-        header = f'{"slice_name":12} {"slice_value":12} {"precision":12} {"recall":12} {"fbeta":12}'
-        print(header, file=file)
+    report = model.generate_metric_report(test, y_test, predictions)
 
-        line = f'{"total":12} {"total":12} {precision:<12.3f} {recall:<12.3f} {fbeta:<12.3f}'
-        print(line, file=file)
+    model.save_metric_report(report, 'model/results.txt')

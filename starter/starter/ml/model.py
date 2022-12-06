@@ -1,4 +1,6 @@
 import pickle
+
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import fbeta_score, precision_score, recall_score
 
@@ -64,6 +66,44 @@ def compute_model_metrics(y, preds):
     precision = precision_score(y, preds, zero_division=1)
     recall = recall_score(y, preds, zero_division=1)
     return precision, recall, fbeta
+
+
+def generate_metric_report(data, targets, predictions):
+    slicing_columns = ['education', 'sex', 'occupation']
+
+    data = data.copy()
+    data['target'] = targets
+    data['predictions'] = predictions
+
+    precision, recall, fbeta = compute_model_metrics(targets, predictions)
+
+    results = [pd.DataFrame({'slice_name': ['total'],
+                             'slice_value': ['total'],
+                             'precision': [precision],
+                             'recall': [recall],
+                             'fbeta': [fbeta]})
+               ]
+    for col in slicing_columns:
+        result = (data.groupby(col)
+                      .apply(lambda x: compute_model_metrics(x['target'], x['predictions']))
+                      .rename('metrics')
+                      .reset_index()
+                      .rename(columns={col: 'slice_value'})
+                      .assign(slice_name=col)
+                  )
+        result[['precision', 'recall', 'fbeta']] = result['metrics'].values.tolist()
+        result.drop(columns='metrics', inplace=True)
+        results.append(result)
+
+    report = pd.concat(results, ignore_index=True)
+
+    return report
+
+
+def save_metric_report(report, file_path):
+
+    with open(file_path, 'w') as file:
+        print(report, file=file)
 
 
 def inference(model, X):
