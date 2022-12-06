@@ -3,7 +3,14 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 from constants import (
-        COLUMN_LABEL, PATH_ENCODER, PATH_MODEL, PATH_MODEL_METRICS, PATH_SOURCE_DATA, FEATURES_CATEGORICAL, TEST_SIZE
+        COLUMN_LABEL,
+        PATH_ENCODER,
+        PATH_MODEL,
+        PATH_MODEL_METRICS,
+        PATH_SOURCE_DATA,
+        FEATURES_CATEGORICAL,
+        N_ESTIMATORS,
+        TEST_SIZE
     )
 from ml import model
 from ml.data import process_data
@@ -23,7 +30,7 @@ if __name__ == '__main__':
             test, categorical_features=FEATURES_CATEGORICAL, label=COLUMN_LABEL, training=False, encoder=encoder, lb=lb
             )
 
-    trained_model = model.train_model(X_train, y_train)
+    trained_model = model.train_model(X_train, y_train, n_estimators=N_ESTIMATORS)
 
     model.save_training_pipeline(encoder, trained_model, PATH_ENCODER, PATH_MODEL)
 

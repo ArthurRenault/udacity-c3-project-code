@@ -2,7 +2,7 @@ COLUMN_LABEL = 'salary'
 
 PATH_ENCODER = 'model/encoder.pkl'
 PATH_MODEL = 'model/model.pkl'
-PATH_MODEL_METRICS = 'slice_output.txt'
+PATH_MODEL_METRICS = 'model/slice_output.txt'
 PATH_SOURCE_DATA = 'data/census.csv'
 
 FEATURES_CATEGORICAL = [
@@ -20,4 +20,5 @@ FEATURES_SLICING = [
     'sex',
     'occupation'
     ]
+N_ESTIMATORS = 100
 TEST_SIZE = 0.2
