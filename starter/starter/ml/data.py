@@ -59,8 +59,8 @@ def process_data(
         X_categorical = encoder.fit_transform(X_categorical)
         y = lb.fit_transform(y.values).ravel()
     else:
-        X_categorical = encoder.transform(X_categorical)
         try:
+            X_categorical = encoder.transform(X_categorical)
             y = lb.transform(y.values).ravel()
         # Catch the case where y is None because we're doing inference.
         except AttributeError:
