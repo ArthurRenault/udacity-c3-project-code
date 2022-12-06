@@ -1,6 +1,9 @@
 from numpy import ndarray
 from ..data import process_data
 
+from starter.conftest import TEST_SIZE
+from starter.starter.constants import FEATURES_CATEGORICAL
+
 
 def test_data_values(data):
     assert data['sex'].isin(['Male', 'Female']).all()
@@ -8,22 +11,13 @@ def test_data_values(data):
 
 
 def test_process_data_training(data):
-    cat_features = [
-        "workclass",
-        "education",
-        "marital-status",
-        "occupation",
-        "relationship",
-        "race",
-        "sex",
-        "native-country",
-    ]
-    X, y, _, _ = process_data(data, categorical_features=cat_features, label="salary", training=True)
+
+    X, y, _, _ = process_data(data, categorical_features=FEATURES_CATEGORICAL, label="salary", training=True)
 
     assert isinstance(X, ndarray)
     assert isinstance(y, ndarray)
-    assert X.shape == (100, 68)
-    assert y.shape == (100,)
+    assert X.shape == (TEST_SIZE, 68)
+    assert y.shape == (TEST_SIZE,)
 
 
 def test_process_data_no_training(data):
