@@ -1,0 +1,2 @@
+slice_name   slice_value  precision    recall       fbeta       
+total        total        0.723        0.634        0.676       
