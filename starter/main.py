@@ -1,1 +1,3 @@
-# Put the code for your API here.
+"""
+Creates an API to serve our model to users.
+"""
