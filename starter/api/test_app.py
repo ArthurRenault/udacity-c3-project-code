@@ -42,7 +42,7 @@ def test_post_negative_class():
 
 
 def test_post_positive_class():
-    data =[
+    data = [
         52,
         'Self-emp-not-inc',
         209642,

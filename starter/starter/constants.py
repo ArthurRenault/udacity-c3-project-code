@@ -1,7 +1,8 @@
+"""
+Contains constants to be used in multiple files.
+"""
 import os
 dirname = os.path.dirname(__file__)
-
-COLUMN_LABEL = 'salary'
 
 PATH_ENCODER = os.path.join(dirname, '../model/encoder.pkl')
 PATH_MODEL = os.path.join(dirname, '../model/model.pkl')
@@ -34,11 +35,13 @@ FEATURES_CATEGORICAL = [
         "sex",
         "native-country",
     ]
+FEATURE_TARGET = 'salary'
 FEATURES_SLICING = [
     'education',
     'sex',
     'occupation'
     ]
+
 N_ESTIMATORS = 100
 RANDOM_SEED = 1234
 TEST_SIZE = 0.2

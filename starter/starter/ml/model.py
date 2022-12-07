@@ -31,6 +31,19 @@ def train_model(X_train, y_train, **kwargs):
 
 
 def save_training_pipeline(encoder, model, encoder_path, model_path):
+    """Save the training pipeline to pickle format.
+
+    Parameters
+    ----------
+    encoder: Any
+        Encoder object to save.
+    model: Any
+        Model object to save.
+    encoder_path: str
+        File path to store the encoder object.
+    model_path: str
+        File path to store the model object.
+    """
     with open(encoder_path, 'wb') as file:
         pickle.dump(encoder, file)
 
@@ -39,6 +52,18 @@ def save_training_pipeline(encoder, model, encoder_path, model_path):
 
 
 def load_training_pipeline(encoder_path, model_path):
+    """Load the training pipeline from pickle files.
+
+    Parameters
+    ----------
+    encoder_path: str
+    model_path: str
+
+    Returns
+    -------
+    encoder
+    model
+    """
     with open(encoder_path, 'rb') as file:
         encoder = pickle.load(file)
 
@@ -71,7 +96,18 @@ def compute_model_metrics(y, preds):
 
 
 def generate_metric_report(data, targets, predictions):
+    """Create a dataframe containing precision, recall and fbeta scores computed on multiple data slices.
 
+    Parameters
+    ----------
+    data: pd.DataFrame
+    targets: np.array
+    predictions: np.array
+
+    Returns
+    -------
+    pd.Dataframe
+    """
     data = data.copy()
     data['target'] = targets
     data['predictions'] = predictions
@@ -102,7 +138,13 @@ def generate_metric_report(data, targets, predictions):
 
 
 def save_metric_report(report, file_path):
+    """Save the metric report.
 
+    Parameters
+    ----------
+    report: pd.DataFrame
+    file_path: str
+    """
     with open(file_path, 'w') as file:
         print(report, file=file)
 

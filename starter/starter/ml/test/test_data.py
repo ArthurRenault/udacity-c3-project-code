@@ -11,7 +11,6 @@ def test_data_values(data):
 
 
 def test_process_data_training(data):
-
     X, y, _, _ = process_data(data, categorical_features=FEATURES_CATEGORICAL, label="salary", training=True)
 
     assert isinstance(X, ndarray)
@@ -22,5 +21,6 @@ def test_process_data_training(data):
 
 def test_process_data_no_training(data):
     X, y, _, _ = process_data(data, training=False)
+
     assert isinstance(y, ndarray)
     assert y.shape == (0,)

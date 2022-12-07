@@ -1,3 +1,13 @@
+"""
+Simulate and API request from a user.
+
+First, make sure FastAPI runs locally
+$ cd starter/
+$ uvicorn main:app
+
+Then, execute $ python request_api.py
+The script will print the sample used and the prediction in the terminal.
+"""
 import json
 import requests
 
