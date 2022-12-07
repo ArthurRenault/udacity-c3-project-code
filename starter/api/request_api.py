@@ -28,4 +28,4 @@ data = [39,
         'United-States'
         ]
 r = requests.post("http://127.0.0.1:8000/wage", data=json.dumps({"sample": data}))
-print(r.json())
+print(f'status code: {r.status_code}', f'response: {r.json()}', sep='\n')
