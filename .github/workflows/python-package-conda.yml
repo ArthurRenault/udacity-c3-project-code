@@ -20,7 +20,7 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        conda create --name cienv flake8=4.0 pytest=7.2
+        conda create --name cienv --channel conda-forge flake8=4.0 pytest=7.2
         conda activate cienv
     - name: Lint with flake8
       run: |
