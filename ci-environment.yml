@@ -5,3 +5,10 @@ channels:
 dependencies:
   - flake8=4.0
   - pytest=7.2
+  - fastapi==0.63.0
+  - pandas
+  - numpy
+  - scikit-learn
+  - requests
+  - uvicorn
+  - gunicorn
