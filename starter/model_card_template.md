@@ -28,7 +28,7 @@ To evaluate the performances of the model 3 metrics have been used:
 - Recall
 - Fbeta
 
-The current model version scores `precision=0.74`, `recall=0.62` and `fbeta=0.68`.
+The current model version scores `precision=0.73`, `recall=0.60` and `fbeta=0.66`.
 The 3 metrics are also computed against various slices of the data. All the results are
 provided in ``model/slice_output.txt``.
 

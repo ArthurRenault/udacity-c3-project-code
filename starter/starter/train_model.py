@@ -10,6 +10,7 @@ from starter.starter.constants import (
         PATH_SOURCE_DATA,
         FEATURES_CATEGORICAL,
         N_ESTIMATORS,
+        RANDOM_SEED,
         TEST_SIZE
     )
 from starter.starter.ml import model
@@ -30,7 +31,7 @@ if __name__ == '__main__':
             test, categorical_features=FEATURES_CATEGORICAL, label=COLUMN_LABEL, training=False, encoder=encoder, lb=lb
             )
 
-    trained_model = model.train_model(X_train, y_train, n_estimators=N_ESTIMATORS)
+    trained_model = model.train_model(X_train, y_train, n_estimators=N_ESTIMATORS, random_state=RANDOM_SEED)
 
     model.save_training_pipeline(encoder, trained_model, PATH_ENCODER, PATH_MODEL)
 

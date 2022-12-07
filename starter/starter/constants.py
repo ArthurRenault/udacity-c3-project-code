@@ -24,4 +24,5 @@ FEATURES_SLICING = [
     'occupation'
     ]
 N_ESTIMATORS = 100
+RANDOM_SEED = 1234
 TEST_SIZE = 0.2
