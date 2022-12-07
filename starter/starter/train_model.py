@@ -2,7 +2,7 @@
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-from starter.starter.constants import (
+from starter.constants import (
         COLUMN_LABEL,
         PATH_ENCODER,
         PATH_MODEL,
@@ -13,8 +13,8 @@ from starter.starter.constants import (
         RANDOM_SEED,
         TEST_SIZE
     )
-from starter.starter.ml import model
-from starter.starter.ml.data import process_data
+from starter.ml import model
+from starter.ml.data import process_data
 
 
 if __name__ == '__main__':

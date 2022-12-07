@@ -1,7 +1,7 @@
 import pytest
 from pandas import read_csv
 
-from starter.starter.constants import PATH_SOURCE_DATA
+from starter.constants import PATH_SOURCE_DATA
 
 
 TEST_SIZE = 100

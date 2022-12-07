@@ -1,8 +1,8 @@
 from numpy import ndarray
-from starter.starter.ml.data import process_data
+from starter.ml.data import process_data
 
-from starter.conftest import TEST_SIZE
-from starter.starter.constants import FEATURES_CATEGORICAL
+from conftest import TEST_SIZE
+from starter.constants import FEATURES_CATEGORICAL
 
 
 def test_data_values(data):

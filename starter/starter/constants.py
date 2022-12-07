@@ -8,6 +8,22 @@ PATH_MODEL = os.path.join(dirname, '../model/model.pkl')
 PATH_MODEL_METRICS = os.path.join(dirname, '../model/slice_output.txt')
 PATH_SOURCE_DATA = os.path.join(dirname, '../data/census.csv')
 
+FEATURES = [
+        "age",
+        "workclass",
+        "fnlgt",
+        "education",
+        "education-num",
+        "marital-status",
+        "occupation",
+        "relationship",
+        "race",
+        "sex",
+        "capital-gain",
+        "capital-loss",
+        "hours-per-week",
+        "native-country"
+        ]
 FEATURES_CATEGORICAL = [
         "workclass",
         "education",
