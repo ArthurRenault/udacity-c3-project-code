@@ -1,9 +1,12 @@
+import os
+dirname = os.path.dirname(__file__)
+
 COLUMN_LABEL = 'salary'
 
-PATH_ENCODER = 'model/encoder.pkl'
-PATH_MODEL = 'model/model.pkl'
-PATH_MODEL_METRICS = 'model/slice_output.txt'
-PATH_SOURCE_DATA = 'data/census.csv'
+PATH_ENCODER = os.path.join(dirname, '../model/encoder.pkl')
+PATH_MODEL = os.path.join(dirname, '../model/model.pkl')
+PATH_MODEL_METRICS = os.path.join(dirname, '../model/slice_output.txt')
+PATH_SOURCE_DATA = os.path.join(dirname, '../data/census.csv')
 
 FEATURES_CATEGORICAL = [
         "workclass",

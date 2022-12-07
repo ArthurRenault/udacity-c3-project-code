@@ -1,4 +1,4 @@
-from ..model import compute_model_metrics
+from starter.starter.ml.model import compute_model_metrics
 
 
 def test_compute_metrics():

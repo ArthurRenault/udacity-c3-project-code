@@ -1,5 +1,5 @@
 from numpy import ndarray
-from ..data import process_data
+from starter.starter.ml.data import process_data
 
 from starter.conftest import TEST_SIZE
 from starter.starter.constants import FEATURES_CATEGORICAL
