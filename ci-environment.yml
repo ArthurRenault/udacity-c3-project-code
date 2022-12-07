@@ -1,0 +1,7 @@
+name: github-actions
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - flake8=4.0
+  - pytest=7.2
