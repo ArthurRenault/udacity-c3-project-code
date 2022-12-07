@@ -20,7 +20,7 @@ jobs:
         echo $CONDA/bin >> $GITHUB_PATH
     - name: Install dependencies
       run: |
-        conda env update --file starter/requirements.txt --channel conda-forge --name base
+        conda env update --file starter/requirements.txt -c conda-forge --name base
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
