@@ -18,53 +18,53 @@ def test_malformed_url():
 
 
 def test_post_negative_class():
-    data = [
-        39,
-        'State-gov',
-        77516,
-        'Bachelors',
-        13,
-        'Never-married',
-        'Adm-clerical',
-        'Not-in-family',
-        'White',
-        'Male',
-        2174,
-        0,
-        40,
-        'United-States'
-        ]
+    data = {
+            "age": 39,
+            "workclass": "State-gov",
+            "fnlgt": 77516,
+            "education": "Bachelors",
+            "education-num": 13,
+            "marital-status": "Never-married",
+            "occupation": "Adm-clerical",
+            "relationship": "Not-in-family",
+            "race": "White",
+            "sex": "Male",
+            "capital-gain": 2174,
+            "capital-loss": 0,
+            "hours-per-week": 40,
+            "native-country": "United-States"
+            }
 
-    r = client.post('http://127.0.0.1:8000/wage', data=json.dumps({"sample": data}))
+    r = client.post('http://127.0.0.1:8000/wage', data=json.dumps(data))
     assert r.status_code == 200
     assert r.json()["sample"] == data
     assert not r.json()["prediction"]
 
 
 def test_post_positive_class():
-    data = [
-        52,
-        'Self-emp-not-inc',
-        209642,
-        'HS-grad',
-        9,
-        'Married-civ-spouse',
-        'Exec-managerial',
-        'Husband',
-        'White',
-        'Male',
-        0,
-        0,
-        45,
-        'United-States'
-        ]
+    data = {
+            "age": 52,
+            "workclass": "Self-emp-not-inc",
+            "fnlgt": 209642,
+            "education": "HS-grad",
+            "education-num": 9,
+            "marital-status": "Married-civ-spouse",
+            "occupation": "Exec-managerial",
+            "relationship": "Husband",
+            "race": "White",
+            "sex": "Male",
+            "capital-gain": 0,
+            "capital-loss": 0,
+            "hours-per-week": 45,
+            "native-country": "United-States"
+            }
 
-    r = client.post("http://127.0.0.1:8000/wage", data=json.dumps({"sample": data}))
+    r = client.post("http://127.0.0.1:8000/wage", data=json.dumps(data))
     assert r.status_code == 200
     assert r.json()["sample"] == data
     assert r.json()["prediction"]
 
 
 def test_post_invalid_sample():
-    r = client.post("http://127.0.0.1:8000/wage", data=json.dumps({"sample": ['foo']*15}))
+    r = client.post("http://127.0.0.1:8000/wage", data=json.dumps({"age": 15}))
     assert r.status_code == 422

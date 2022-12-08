@@ -14,28 +14,41 @@ app = FastAPI()
 
 
 class ModelInput(BaseModel):
-    sample: list = []
+    age: int
+    workclass: str
+    fnlgt: int
+    education: str
+    education_num: int
+    marital_status: str
+    occupation: str
+    relationship: str
+    race: str
+    sex: str
+    capital_gain: int
+    capital_loss: int
+    hours_per_week: int
+    native_country: str
 
     class Config:
         schema_extra = {
                 "example": {
-                        "sample": [39,
-        'State-gov',
-        77516,
-        'Bachelors',
-        13,
-        'Never-married',
-        'Adm-clerical',
-        'Not-in-family',
-        'White',
-        'Male',
-        2174,
-        0,
-        40,
-        'United-States'
-        ]
+                        "age": 39,
+                        "workclass": "State-gov",
+                        "fnlgt": 77516,
+                        "education": "Bachelors",
+                        "education_num": 13,
+                        "marital_status": "Never-married",
+                        "occupation": "Adm-clerical",
+                        "relationship": "Not-in-family",
+                        "race": "White",
+                        "sex": "Male",
+                        "capital_gain": 2174,
+                        "capital_loss": 0,
+                        "hours_per_week": 40,
+                        "native_country": "United-States"
                         }
                 }
+        alias_generator = lambda x: x.replace('_', '-')
 
 
 @app.get('/')
@@ -46,13 +59,9 @@ def hello_world():
 @app.post('/wage')
 def get_prediction(model_input: ModelInput):
 
-    input_size = len(model_input.sample)
-    if input_size != 14:
-        raise HTTPException(status_code=422, detail=f"14 features expected, received {input_size} features.")
-
     encoder, trained_model = load_training_pipeline(PATH_ENCODER, PATH_MODEL)
 
-    data = pd.DataFrame(data=[model_input.sample], columns=FEATURES)
+    data = pd.DataFrame(model_input.dict(by_alias=True), index=[0])
 
     x_predict, _, _, _ = process_data(
             data,
@@ -64,4 +73,4 @@ def get_prediction(model_input: ModelInput):
             )
     prediction = inference(trained_model, x_predict)
 
-    return {"sample": model_input.sample, "prediction": bool(prediction[0])}
+    return {"prediction": bool(prediction[0]), "sample": model_input.dict(by_alias=True)}
