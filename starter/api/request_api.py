@@ -28,5 +28,5 @@ data = {
         "hours-per-week": 40,
         "native-country": "United-States"
         }
-r = requests.post("http://127.0.0.1:8000/wage", data=json.dumps(data))
+r = requests.post("https://udacity-deployment.onrender.com/wage", data=json.dumps(data))
 print(f'status code: {r.status_code}', f'response: {r.json()}', sep='\n')
